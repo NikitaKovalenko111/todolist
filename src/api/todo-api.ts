@@ -6,7 +6,8 @@ type todoAPIType = {
 }
 
 const axiosInstance = axios.create({
-    baseURL: 'https://todolist-api-pe58.onrender.com/todos'
+    baseURL: 'https://todolist-api-pe58.onrender.com/todos',
+    withCredentials: true
 })
 
 const todoAPI: todoAPIType = {
