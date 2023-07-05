@@ -7,6 +7,7 @@ type todoAPIType = {
 
 const axiosInstance = axios.create({
     baseURL: 'https://todolist-api-pe58.onrender.com/todos',
+    withCredentials: false,
     headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
