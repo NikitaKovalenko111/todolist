@@ -6,12 +6,13 @@ type todoAPIType = {
 }
 
 const axiosInstance = axios.create({
-    baseURL: 'https://todolist-api-fci2.onrender.com/todos',
+    baseURL: 'https://todolist-api-fci2.onrender.com/',
 })
 
 const todoAPI: todoAPIType = {
-    getTodos: () => {  
-        return axiosInstance.get('/').then((res) => res.data)
+    getTodos: () => {   
+        console.log(axiosInstance.get('/todos').then((res) => res.data));
+        return axiosInstance.get('/todos').then((res) => res.data)
     }
 }
 
