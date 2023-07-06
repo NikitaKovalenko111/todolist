@@ -16,9 +16,8 @@ const initialState = {
 
 const todoReducer = (state: initialStateType = initialState, action: AnyAction): RootState => {
     switch (action.type) {
-        case ActionTypes.SET_TODOS: {
-            state.todos = action.todos
-            return state
+        case ActionTypes.SET_TODOS: {   
+            return { ...state, todos: action.todos }
         }
 
         default:
