@@ -16,3 +16,13 @@ export const postTodosAC = (target: string) => ({
     type: ActionTypes.POST_TODO,
     target: target,
 })
+
+export const putTodoAC = (isCompleted: boolean, id: number) => ({
+    type: ActionTypes.CHANGE_ISCOMPLETED,
+    isCompleted: isCompleted,
+    id: id
+})
+
+export const putTodoApiAC = () => ({
+    type: ActionTypes.CHANGE_ISCOMPLETED_API
+})

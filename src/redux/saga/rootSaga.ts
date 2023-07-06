@@ -1,10 +1,11 @@
 import { all, takeEvery, fork } from 'redux-saga/effects'
-import { getTodosWatcher, postTodoWatcher } from './todoSagas'
+import { getTodosWatcher, postTodoWatcher, putTodoWatcher } from './todoSagas'
 
 function* rootSaga() {
     yield all([
         fork(getTodosWatcher),
-        fork(postTodoWatcher)
+        fork(postTodoWatcher),
+        fork(putTodoWatcher)
     ])
 }
 

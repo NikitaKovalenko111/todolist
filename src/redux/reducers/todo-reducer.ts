@@ -5,7 +5,8 @@ interface initialStateType {
     todos: Array<todoItemType>
     currentData: {
         target: string,
-        isCompleted: boolean
+        isCompleted: boolean,
+        id: number | null
     }
 }
 
@@ -13,14 +14,17 @@ export enum ActionTypes {
     GET_TODOS = "todo/GET_TODOS",
     SET_TODOS = "todo/SET_TODOS",
     POST_TODO = "todo/POST_TODO",
-    POST_API_TODO = "todo/POST_TODO_API"
+    POST_API_TODO = "todo/POST_TODO_API",
+    CHANGE_ISCOMPLETED = "todo/CHANGE_ISCOMPLETED",
+    CHANGE_ISCOMPLETED_API = "todo/CHANGE_ISCOMPLETED_API"
 }
 
 const initialState: initialStateType = {
     todos: [],
     currentData: {
         target: '',
-        isCompleted: false
+        isCompleted: false,
+        id: null
     }
 }
 
@@ -33,6 +37,13 @@ const todoReducer = (state: initialStateType = initialState, action: AnyAction):
             return { ...state, currentData: {
                 target: action.target,
                 isCompleted: false
+            } }
+        }
+        case ActionTypes.CHANGE_ISCOMPLETED: {
+            debugger
+            return { ...state, currentData: {
+                isCompleted: action.isCompleted,
+                id: action.id
             } }
         }
         default:

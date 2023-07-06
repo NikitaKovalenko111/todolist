@@ -4,6 +4,7 @@ import { todoItemType, todoResolve } from '../types'
 type todoAPIType = {
     getTodos: () => Promise<todoResolve>
     postTodo: (target: string, isCompleted: boolean) => Promise<todoItemType>
+    putTodo: (target: string, isCompleted: boolean, id: number | null) => Promise<todoItemType>
 }
 
 const axiosInstance = axios.create({
@@ -19,6 +20,12 @@ const todoAPI: todoAPIType = {
             target: target,
             isCompleted: isCompleted
         }).then((res) => res.data)
+    },
+    putTodo: (target, isCompleted, id) => {
+        return axiosInstance.put(`/todos/${id}`, {
+            target: target,
+            isCompleted: isCompleted,
+        }).then(res => res.data)
     }
 }
 
