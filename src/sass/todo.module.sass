@@ -7,9 +7,21 @@
     background-color: #fcfcfc
     box-shadow: 7px 7px 5px -1px rgba(34, 60, 80, 0.38)
     font-family: sans-serif
+    position: relative
 
 .todoItem_green
     background-color: #c3f7d1 !important
+
+.delete
+    position: absolute
+    top: 5px
+    right: 10px
+    font-size: 14px
+    &:hover
+        color: red
+        cursor: pointer
+        user-select: none
+
     
 .block
     display: flex
@@ -22,7 +34,7 @@
     .checkbox
         position: absolute
         opacity: 0
-        
+        height: 0
         // Text
         & + label
             display: inline-block
@@ -119,5 +131,6 @@
 .subblock
     display: flex
     justify-content: space-between
+    text-align: left
     span
         opacity: 60%

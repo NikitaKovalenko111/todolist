@@ -12,3 +12,7 @@ export const todoCurrentDataSelector = (state: RootState) => ({
 export const todoCurrentTargetSelector = createSelector([todosSelector, todoCurrentDataSelector], (todos: Array<todoItemType>, data) => {
     return todos.find(el => data.id == el.id)?.target
 })
+
+export const todoQuerySelector = (state: RootState) => ({
+    target: state.todos.query.target
+})

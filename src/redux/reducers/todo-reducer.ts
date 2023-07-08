@@ -8,6 +8,9 @@ interface initialStateType {
         isCompleted: boolean,
         id: number | null
     }
+    query: {
+        target: string
+    }
 }
 
 export enum ActionTypes {
@@ -16,7 +19,10 @@ export enum ActionTypes {
     POST_TODO = "todo/POST_TODO",
     POST_API_TODO = "todo/POST_TODO_API",
     CHANGE_ISCOMPLETED = "todo/CHANGE_ISCOMPLETED",
-    CHANGE_ISCOMPLETED_API = "todo/CHANGE_ISCOMPLETED_API"
+    CHANGE_ISCOMPLETED_API = "todo/CHANGE_ISCOMPLETED_API",
+    DELETE_TODO = "todo/DELETE_TODO",
+    DELETE_TODO_API = "todo/DELETE_TODO_API",
+    CHANGE_QUERY = "todo/CHANGE_QUERY"
 }
 
 const initialState: initialStateType = {
@@ -25,12 +31,15 @@ const initialState: initialStateType = {
         target: '',
         isCompleted: false,
         id: null
+    },
+    query: {
+        target: ''
     }
 }
 
 const todoReducer = (state: initialStateType = initialState, action: AnyAction): RootState => {
     switch (action.type) {
-        case ActionTypes.SET_TODOS: {   
+        case ActionTypes.SET_TODOS: {
             return { ...state, todos: action.todos }
         }
         case ActionTypes.POST_TODO: {
@@ -40,11 +49,24 @@ const todoReducer = (state: initialStateType = initialState, action: AnyAction):
             } }
         }
         case ActionTypes.CHANGE_ISCOMPLETED: {
-            debugger
             return { ...state, currentData: {
                 isCompleted: action.isCompleted,
                 id: action.id
             } }
+        }
+        case ActionTypes.DELETE_TODO: {
+            return {
+                ...state, currentData: {
+                    id: action.id
+                }
+            }
+        }
+        case ActionTypes.CHANGE_QUERY: {
+            return {
+                ...state, query: {
+                    target: action.target
+                }
+            }
         }
         default:
             return state

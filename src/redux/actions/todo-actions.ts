@@ -1,7 +1,7 @@
 import { todoItemType } from "../../types";
 import { ActionTypes } from "../reducers/todo-reducer";
 
-export const getTodosAC = () => ({ type: ActionTypes.GET_TODOS })
+export const getTodosAC = () => ( { type: ActionTypes.GET_TODOS })
 
 export const setTodosAC = (todos: Array<todoItemType>) => ({
     type: ActionTypes.SET_TODOS,
@@ -25,4 +25,18 @@ export const putTodoAC = (isCompleted: boolean, id: number) => ({
 
 export const putTodoApiAC = () => ({
     type: ActionTypes.CHANGE_ISCOMPLETED_API
+})
+
+export const changeDeleteIdAC = (id: number) => ({
+    type: ActionTypes.DELETE_TODO,
+    id: id
+})
+
+export const changeDeleteIdApiAC = () => ({
+    type: ActionTypes.DELETE_TODO_API
+})
+
+export const changeQueryAC = (target: string) => ({
+    type: ActionTypes.CHANGE_QUERY,
+    target: target
 })

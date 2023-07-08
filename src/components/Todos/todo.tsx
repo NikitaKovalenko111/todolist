@@ -3,7 +3,7 @@ import style from './../../sass/todo.module.sass'
 import { useState, useEffect } from 'react'
 import { AppDispatch } from '../../types'
 import { useDispatch } from 'react-redux'
-import { putTodoAC, putTodoApiAC } from '../../redux/actions/todo-actions'
+import { changeDeleteIdAC, changeDeleteIdApiAC, putTodoAC, putTodoApiAC } from '../../redux/actions/todo-actions'
 
 type PropsType = {
     target: string
@@ -24,8 +24,16 @@ const Todo: React.FC<PropsType> = ({ target, id, date, dateIsCompleted, isComple
         dispatch(putTodoApiAC())
     }
 
+    const deleteHandler = (): void => {
+        dispatch(changeDeleteIdAC(id))
+        dispatch(changeDeleteIdApiAC())
+    }
+
     return (
         <article key={ id } className={cn(style.todoItem, { [style.todoItem_green]: currentIsCompleted })}>
+            <div onClick={deleteHandler} className={cn(style.delete)}>
+                &#9587;
+            </div>
             <div className={cn(style.block)}>
                 <span className={cn(style.target)}>{ target }</span>
                 <div className={cn(style.form_checkbox)}>
@@ -34,8 +42,8 @@ const Todo: React.FC<PropsType> = ({ target, id, date, dateIsCompleted, isComple
                 </div>
             </div>
             <div className={cn(style.subblock)}>
-                <span className={cn(style.date)}>Создано: { date }</span>
-                { dateIsCompleted && <span className={cn(style.dateIsCompleted)}>{ dateIsCompleted }</span> }
+                <span className={cn(style.date)}>Создано:<br /> { date }</span>
+                { dateIsCompleted && <span className={cn(style.dateIsCompleted)}>Завершено:<br />{ dateIsCompleted }</span> }
             </div>
         </article>
     )

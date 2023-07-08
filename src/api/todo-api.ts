@@ -2,9 +2,10 @@ import axios from 'axios'
 import { todoItemType, todoResolve } from '../types'
 
 type todoAPIType = {
-    getTodos: () => Promise<todoResolve>
+    getTodos: (target: string) => Promise<todoResolve>
     postTodo: (target: string, isCompleted: boolean) => Promise<todoItemType>
     putTodo: (target: string, isCompleted: boolean, id: number | null) => Promise<todoItemType>
+    deleteTodo: (id: number | null) => Promise<number>
 }
 
 const axiosInstance = axios.create({
@@ -12,8 +13,8 @@ const axiosInstance = axios.create({
 })
 
 const todoAPI: todoAPIType = {
-    getTodos: () => {   
-        return axiosInstance.get('/todos').then((res) => res.data)
+    getTodos: (target) => {   
+        return axiosInstance.get(`/todos${ target ? '?target=' + target : '' }`).then((res) => res.data)
     },
     postTodo: (target, isCompleted) => {
         return axiosInstance.post('/todos', {
@@ -26,6 +27,9 @@ const todoAPI: todoAPIType = {
             target: target,
             isCompleted: isCompleted,
         }).then(res => res.data)
+    },
+    deleteTodo: (id) => {
+        return axiosInstance.delete(`/todos/${id}`).then(res => res.status)
     }
 }
 
