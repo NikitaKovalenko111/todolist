@@ -14,7 +14,7 @@ const axiosInstance = axios.create({
 
 const todoAPI: todoAPIType = {
     getTodos: (target) => {   
-        return axiosInstance.get(`/todos${ target ? '?target=' + target : '' }`).then((res) => res.data)
+        return axiosInstance.get(`/todos?target=${target}`).then((res) => res.data)
     },
     postTodo: (target, isCompleted) => {
         return axiosInstance.post('/todos', {
