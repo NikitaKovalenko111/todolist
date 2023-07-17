@@ -3,47 +3,41 @@ import { ActionTypes } from '../reducers/todo-reducer'
 import todoAPI from '../../api/todo-api'
 import { todoItemType } from '../../types'
 import { getTodosAC, setTodosAC } from '../actions/todo-actions'
-import { todoCurrentDataSelector, todoCurrentTargetSelector, todoQuerySelector } from '../../selectors/todo-selectors'
+import { AnyAction } from 'redux'
 
 export function* getTodosWatcher() {
     yield takeLatest(ActionTypes.GET_TODOS, getTodosWorker)
 }
 
-function* getTodosWorker() { 
-    const query: { target: string } = yield select(todoQuerySelector)
-
-    const data: Array<todoItemType> = yield call(todoAPI.getTodos, query.target)
+function* getTodosWorker(action: AnyAction) { 
+    const data: Array<todoItemType> = yield call(todoAPI.getTodos, action.target)
     yield put(setTodosAC(data))
 }
 
 export function* postTodoWatcher() {
-    yield takeEvery(ActionTypes.POST_API_TODO, postTodoWorker)
+    yield takeEvery(ActionTypes.POST_TODO, postTodoWorker)
 }
 
-export function* postTodoWorker() {
-    const currentData: { target: string, isCompleted: boolean } = yield select(todoCurrentDataSelector)
-    const data: todoItemType = yield call(todoAPI.postTodo, currentData.target, currentData.isCompleted)
-    yield put(getTodosAC())
+export function* postTodoWorker(action: AnyAction) {
+    const data: todoItemType = yield call(todoAPI.postTodo, action.target, action.isCompleted)
+    yield put(getTodosAC(''))
 }
 
 export function* putTodoWatcher() {
-    yield takeEvery(ActionTypes.CHANGE_ISCOMPLETED_API, putTodoWorker)
+    yield takeEvery(ActionTypes.CHANGE_TODO, putTodoWorker)
 }
 
-export function* putTodoWorker() {
-    const currentData: { target: string, isCompleted: boolean, id: number | null } = yield select(todoCurrentDataSelector)
-    const currentTarget: string = yield select(todoCurrentTargetSelector)
-    const data: todoItemType = yield call(todoAPI.putTodo, currentTarget, currentData.isCompleted, currentData.id)
+export function* putTodoWorker(action: AnyAction) {
+    const data: todoItemType = yield call(todoAPI.putTodo, action.target, action.isCompleted, action.id)
     yield put(getTodosAC())
 }
 
 export function* deleteTodoWatcher() {
-    yield takeEvery(ActionTypes.DELETE_TODO_API, deleteTodoWorker)
+    yield takeEvery(ActionTypes.DELETE_TODO, deleteTodoWorker)
 }
 
-export function* deleteTodoWorker() {
-    const currentData: { target: string, isCompleted: boolean, id: number | null } = yield select(todoCurrentDataSelector)
-    const id = currentData.id
+export function* deleteTodoWorker(action: AnyAction) {
+    const id = action.id
     const status: number = yield call(todoAPI.deleteTodo, id)
     yield put(getTodosAC())
 }

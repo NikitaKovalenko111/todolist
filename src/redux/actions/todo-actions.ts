@@ -1,42 +1,30 @@
 import { todoItemType } from "../../types";
 import { ActionTypes } from "../reducers/todo-reducer";
 
-export const getTodosAC = () => ( { type: ActionTypes.GET_TODOS })
+export const getTodosAC = (target: string = '') => ( { 
+    type: ActionTypes.GET_TODOS,
+    target: target
+})
 
 export const setTodosAC = (todos: Array<todoItemType>) => ({
     type: ActionTypes.SET_TODOS,
     todos: todos
 })
 
-export const postTodosApiAC = () => ({
-    type: ActionTypes.POST_API_TODO
-})
-
-export const postTodosAC = (target: string) => ({
+export const postTodosAC = (target: string, isCompleted: boolean = false) => ({
     type: ActionTypes.POST_TODO,
     target: target,
+    isCompleted: isCompleted
 })
 
-export const putTodoAC = (isCompleted: boolean, id: number) => ({
-    type: ActionTypes.CHANGE_ISCOMPLETED,
+export const putTodoAC = (isCompleted: boolean, id: number, target: string) => ({
+    type: ActionTypes.CHANGE_TODO,
     isCompleted: isCompleted,
-    id: id
+    id: id,
+    target: target
 })
 
-export const putTodoApiAC = () => ({
-    type: ActionTypes.CHANGE_ISCOMPLETED_API
-})
-
-export const changeDeleteIdAC = (id: number) => ({
+export const deleteTodoAC = (id: number) => ({
     type: ActionTypes.DELETE_TODO,
     id: id
-})
-
-export const changeDeleteIdApiAC = () => ({
-    type: ActionTypes.DELETE_TODO_API
-})
-
-export const changeQueryAC = (target: string) => ({
-    type: ActionTypes.CHANGE_QUERY,
-    target: target
 })

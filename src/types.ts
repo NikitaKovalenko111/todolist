@@ -9,7 +9,7 @@ export type todoItemType = {
     id: number
     isCompleted: boolean
     date: string
-    dateIsCompleted: string
+    dateIsCompleted?: string
 }
 
 export type todoResolve = Array<todoItemType>

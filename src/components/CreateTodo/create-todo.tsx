@@ -3,7 +3,7 @@ import cn from 'classnames'
 import style from './../../sass/createTodo.module.sass'
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../types';
-import { postTodosAC, postTodosApiAC } from '../../redux/actions/todo-actions';
+import { postTodosAC } from '../../redux/actions/todo-actions';
 
 type PropsType = {}
 
@@ -14,7 +14,6 @@ const CreateTodo: React.FC<PropsType> = (): JSX.Element => {
 
     const postTargetHandler = (): void => {
         dispatch(postTodosAC(currentTarget))
-        dispatch(postTodosApiAC())
         changeCurrentTarget('')
     }
 

@@ -1,9 +1,9 @@
 import cn from 'classnames'
 import style from './../../sass/todo.module.sass'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { AppDispatch } from '../../types'
 import { useDispatch } from 'react-redux'
-import { changeDeleteIdAC, changeDeleteIdApiAC, putTodoAC, putTodoApiAC } from '../../redux/actions/todo-actions'
+import { deleteTodoAC, putTodoAC, } from '../../redux/actions/todo-actions'
 
 type PropsType = {
     target: string
@@ -20,13 +20,11 @@ const Todo: React.FC<PropsType> = ({ target, id, date, dateIsCompleted, isComple
 
     const changeIsCompletedHandler = (): void => {
         changeCurrentIsCompleted(current => !current)
-        dispatch(putTodoAC(!currentIsCompleted, id))
-        dispatch(putTodoApiAC())
+        dispatch(putTodoAC(!currentIsCompleted, id, target))
     }
 
     const deleteHandler = (): void => {
-        dispatch(changeDeleteIdAC(id))
-        dispatch(changeDeleteIdApiAC())
+        dispatch(deleteTodoAC(id))
     }
 
     return (

@@ -1,0 +1,85 @@
+import { todoItemType, todoResolve } from '../../types'
+import todoAPI from './../../api/todo-api'
+
+jest.mock('./../../api/todo-api')
+
+describe('API TESTS', () => {
+    let response: todoResolve | null = null
+    const todoApiMock = (todoAPI as jest.Mocked<typeof todoAPI>)
+
+    test('GET DATA API TEST', async () => {
+        let items: todoResolve = [
+            {
+                id: 1689577395845,
+                target: "Цель",
+                isCompleted: false,
+                date: "7/17/2023, 7:03:15 AM"
+            }
+        ]
+
+        response = items
+
+        todoApiMock.getTodos.mockResolvedValue(response)
+
+        const data: todoResolve = await todoAPI.getTodos('') 
+
+        expect(todoApiMock.getTodos).toBeCalledTimes(1)
+        expect(data).toEqual(response)
+    })
+
+    test('POST DATA API TEST', async () => {
+        let postData: { target: string, isCompleted: boolean } = {
+            target: 'Тест',
+            isCompleted: false
+        }
+
+        let resolveData: todoItemType = {
+            id: 1,
+            target: 'Тест',
+            isCompleted: false,
+            date: 'date'
+        }
+
+        todoApiMock.postTodo.mockResolvedValue(resolveData)
+
+        const data: todoItemType = await todoAPI.postTodo(postData.target, postData.isCompleted)
+
+        expect(todoApiMock.postTodo).toBeCalledTimes(1)
+        expect(data).toEqual(resolveData)
+    })
+
+    test('PUT TODO API TEST', async () => {
+        const putData: { target: string, isCompleted: boolean, id: number } = {
+            target: 'Тест',
+            isCompleted: true,
+            id: 1
+        }
+
+        const resolveData: todoItemType = {
+            target: 'Тест',
+            isCompleted: true,
+            id: 1, 
+            date: 'date',
+            dateIsCompleted: 'date is completed'
+        }
+
+        todoApiMock.putTodo.mockResolvedValue(resolveData)
+
+        const data: todoItemType = await todoAPI.putTodo(putData.target, putData.isCompleted, putData.id)
+
+        expect(todoApiMock.putTodo).toBeCalledTimes(1)
+        expect(data).toEqual(resolveData)
+    })
+
+    test("DELETE TODO API TEST", async () => {
+        const deleteId: number = 1
+        const resolvedStatus: number = 204
+        
+        todoApiMock.deleteTodo.mockResolvedValue(resolvedStatus)
+
+        const status: number = await todoAPI.deleteTodo(deleteId)
+
+        expect(todoApiMock.deleteTodo).toBeCalledTimes(1)
+        expect(status).toBe(resolvedStatus)
+    })
+})
