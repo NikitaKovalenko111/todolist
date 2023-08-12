@@ -1,5 +1,5 @@
 import { RootState, todoItemType } from "../../types"
-import { AnyAction } from "@reduxjs/toolkit"
+import { ActionCreatorTypes } from "../actions/todo-actions"
 
 export interface initialStateType {
     todos: Array<todoItemType>
@@ -17,7 +17,7 @@ const initialState: initialStateType = {
     todos: [],
 }
 
-const todoReducer = (state: initialStateType = initialState, action: AnyAction): RootState => {
+const todoReducer = (state: initialStateType = initialState, action: ActionCreatorTypes): RootState => {
     switch (action.type) {
         case ActionTypes.SET_TODOS: {
             return { ...state, todos: action.todos }

@@ -28,19 +28,19 @@ const Todo: React.FC<PropsType> = ({ target, id, date, dateIsCompleted, isComple
     }
 
     return (
-        <article key={ id } className={cn(style.todoItem, { [style.todoItem_green]: currentIsCompleted })}>
-            <div onClick={deleteHandler} className={cn(style.delete)}>
+        <article data-testid="todo/article" key={ id } className={cn(style.todoItem, { [style.todoItem_green]: currentIsCompleted })}>
+            <div data-testid="todo/close" onClick={deleteHandler} className={cn(style.delete)}>
                 &#9587;
             </div>
-            <div className={cn(style.block)}>
-                <span className={cn(style.target)}>{ target }</span>
+            <div data-testid="todo/block" className={cn(style.block)}>
+                <span data-testid="todo/target" className={cn(style.target)}>{ target }</span>
                 <div className={cn(style.form_checkbox)}>
-                    <input type="checkbox" name="isCompleted" id={`isCompleted` + id} onClick={ changeIsCompletedHandler } className={cn(style.checkbox)} checked={currentIsCompleted} />
+                    <input type="checkbox" data-testid="todo/checkbox" name="isCompleted" id={`isCompleted` + id} onClick={ changeIsCompletedHandler } className={cn(style.checkbox)} checked={currentIsCompleted} />
                     <label htmlFor={"isCompleted" + id}></label>
                 </div>
             </div>
             <div className={cn(style.subblock)}>
-                <span className={cn(style.date)}>Создано:<br /> { date }</span>
+                <span data-testid="todo/date" className={cn(style.date)}>Создано:<br /> { date }</span>
                 { dateIsCompleted && <span className={cn(style.dateIsCompleted)}>Завершено:<br />{ dateIsCompleted }</span> }
             </div>
         </article>

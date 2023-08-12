@@ -4,12 +4,12 @@ import Todos from './components/Todos/todos';
 import { Space } from 'antd'
 import CreateTodo from './components/CreateTodo/create-todo';
 import Search from './components/Search/search';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="App" data-testid='app'>
         <Header />
         <Space direction='vertical' size="large" style={{ display: 'flex', flexDirection: "column", alignItems: 'center' }} >
           <Search />

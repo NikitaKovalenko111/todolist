@@ -20,8 +20,8 @@ const Todos: React.FC<PropsType> = (): JSX.Element => {
     }, [])
 
     return (
-        <section className={cn(style.todos)}>
-            <div className={cn("container", style.container)}>
+        <section data-testid='todos' className={cn(style.todos)}>
+            <div data-testid='container' className={cn("container", style.container)}>
                 {   todos.length > 0 ?
                     todos.map((el: todoItemType) => {
                         return <Todo target={el.target} id={el.id} isCompleted={el.isCompleted} date={el.date} dateIsCompleted={el.dateIsCompleted} />

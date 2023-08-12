@@ -18,9 +18,9 @@ const CreateTodo: React.FC<PropsType> = (): JSX.Element => {
     }
 
     return  (
-        <div className={cn(style.createTodo)}>
-            <input type="text" value={currentTarget} onChange={(el) => { changeCurrentTarget(el.currentTarget.value) }} />
-            <button onClick={postTargetHandler}>Создать</button>
+        <div className={cn(style.createTodo)} data-testid="create-todo/wrapper">
+            <input type="text" data-testid="create-todo/input" value={currentTarget} onChange={(el) => { changeCurrentTarget(el.currentTarget.value) }} />
+            <button data-testid="create-todo/button" onClick={postTargetHandler}>Создать</button>
         </div>
     )
 }

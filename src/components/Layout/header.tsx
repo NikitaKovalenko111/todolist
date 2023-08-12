@@ -6,10 +6,10 @@ type PropsType = {}
 
 const Header: React.FC<PropsType> = (): JSX.Element => {
     return (
-        <header className={cn(style.header)}>
-            <div className="container">
-                <div className={cn(style.logo)}>
-                    <a href="#"><img width="70px" src={logo} alt="logo" /></a>
+        <header data-testid='header' className={cn(style.header)}>
+            <div className="container" data-testid='container'>
+                <div data-testid='logoWrapper' className={cn(style.logo)}>
+                    <a data-testid='logo' href="#"><img width="70px" src={logo} alt="logo" /></a>
                 </div>
             </div>
         </header>
