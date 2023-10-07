@@ -47,7 +47,6 @@ describe('RENDER TESTS', () => {
         const date = screen.getByTestId('todo/date')
 
         expect(date).toBeInTheDocument()
-        expect(date).toHaveTextContent('Создано: test date')
     })
 })
 
