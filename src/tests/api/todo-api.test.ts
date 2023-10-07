@@ -10,7 +10,7 @@ describe('API TESTS', () => {
     test('GET DATA API TEST', async () => {
         let items: todoResolve = [
             {
-                id: 1689577395845,
+                _id: '1689577395845',
                 target: "Цель",
                 isCompleted: false,
                 date: "7/17/2023, 7:03:15 AM"
@@ -34,7 +34,7 @@ describe('API TESTS', () => {
         }
 
         let resolveData: todoItemType = {
-            id: 1,
+            _id: '1',
             target: 'Тест',
             isCompleted: false,
             date: 'date'
@@ -49,30 +49,30 @@ describe('API TESTS', () => {
     })
 
     test('PUT TODO API TEST', async () => {
-        const putData: { target: string, isCompleted: boolean, id: number } = {
+        const putData: { target: string, isCompleted: boolean, _id: string } = {
             target: 'Тест',
             isCompleted: true,
-            id: 1
+            _id: '1'
         }
 
         const resolveData: todoItemType = {
             target: 'Тест',
             isCompleted: true,
-            id: 1, 
+            _id: '1', 
             date: 'date',
             dateIsCompleted: 'date is completed'
         }
 
         todoApiMock.putTodo.mockResolvedValue(resolveData)
 
-        const data: todoItemType = await todoAPI.putTodo(putData.target, putData.isCompleted, putData.id)
+        const data: todoItemType = await todoAPI.putTodo(putData.target, putData.isCompleted, putData._id)
 
         expect(todoApiMock.putTodo).toBeCalledTimes(1)
         expect(data).toEqual(resolveData)
     })
 
     test("DELETE TODO API TEST", async () => {
-        const deleteId: number = 1
+        const deleteId: string = '1'
         const resolvedStatus: number = 204
         
         todoApiMock.deleteTodo.mockResolvedValue(resolvedStatus)

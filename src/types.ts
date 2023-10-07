@@ -6,10 +6,10 @@ export type AppDispatch = typeof store.dispatch
 
 export type todoItemType = {
     target: string
-    id: number
+    _id: string
     isCompleted: boolean
-    date: string
-    dateIsCompleted?: string
+    date: Date | string
+    dateIsCompleted?: Date | string
 }
 
 export type todoResolve = Array<todoItemType>

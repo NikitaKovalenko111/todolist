@@ -7,9 +7,9 @@ import { deleteTodoAC, putTodoAC, } from '../../redux/actions/todo-actions'
 
 type PropsType = {
     target: string
-    id: number
-    date: string
-    dateIsCompleted?: string
+    id: string
+    date: Date | string
+    dateIsCompleted?: Date | string
     isCompleted: boolean
 }
 
@@ -40,8 +40,8 @@ const Todo: React.FC<PropsType> = ({ target, id, date, dateIsCompleted, isComple
                 </div>
             </div>
             <div className={cn(style.subblock)}>
-                <span data-testid="todo/date" className={cn(style.date)}>Создано:<br /> { date }</span>
-                { dateIsCompleted && <span className={cn(style.dateIsCompleted)}>Завершено:<br />{ dateIsCompleted }</span> }
+                <span data-testid="todo/date" className={cn(style.date)}>Создано:<br /> { date.toLocaleString() }</span>
+                { dateIsCompleted && <span className={cn(style.dateIsCompleted)}>Завершено:<br />{ dateIsCompleted.toLocaleString() }</span> }
             </div>
         </article>
     )

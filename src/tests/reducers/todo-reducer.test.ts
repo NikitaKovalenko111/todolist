@@ -19,7 +19,7 @@ describe('todoReducer tests', () => {
     test('SET TODOS', () => {
         expectedState = { ...state, todos: [
             {
-                id: 1,
+                _id: '1',
                 target: 'test',
                 isCompleted: false,
                 date: '7/14/2023',
@@ -28,7 +28,7 @@ describe('todoReducer tests', () => {
 
         expect(todoReducer(state, setTodosAC([
             {
-                id: 1,
+                _id: '1',
                 target: 'test',
                 isCompleted: false,
                 date: '7/14/2023',
@@ -37,6 +37,7 @@ describe('todoReducer tests', () => {
     })
 
     test('OTHER ACTIONS', () => {
+        //@ts-ignore
         expect(todoReducer(state, { type: 'SOME OTHER ACTION' })).toEqual(state)
     })
 })

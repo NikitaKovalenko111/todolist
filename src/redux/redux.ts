@@ -2,7 +2,7 @@ import { combineReducers, Reducer, applyMiddleware, createStore } from '@reduxjs
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from './saga/rootSaga'
 import todoReducer from './reducers/todo-reducer'
-
+//@ts-ignore
 const reducers: Reducer = combineReducers({
   todos: todoReducer
 })

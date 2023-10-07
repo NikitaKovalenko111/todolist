@@ -4,8 +4,8 @@ import { todoItemType, todoResolve } from '../types'
 type todoAPIType = {
     getTodos: (target: string) => Promise<todoResolve>
     postTodo: (target: string, isCompleted: boolean) => Promise<todoItemType>
-    putTodo: (target: string, isCompleted: boolean, id: number | null) => Promise<todoItemType>
-    deleteTodo: (id: number | null) => Promise<number>
+    putTodo: (target: string, isCompleted: boolean, id: string | null) => Promise<todoItemType>
+    deleteTodo: (id: string | null) => Promise<number>
 }
 
 const axiosInstance = axios.create({

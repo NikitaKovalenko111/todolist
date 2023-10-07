@@ -40,7 +40,7 @@ describe('SAGA WORKERS TESTS', () => {
     test('GET TODOS', async () => {
         let response: todoResolve = [
             {
-                id: 1689577395845,
+                _id: '1689577395845',
                 target: "Цель",
                 isCompleted: false,
                 date: "7/17/2023, 7:03:15 AM"

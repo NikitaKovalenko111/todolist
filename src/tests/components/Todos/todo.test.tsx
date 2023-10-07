@@ -7,7 +7,7 @@ import todoAPI from "../../../api/todo-api"
 describe('RENDER TESTS', () => {
     beforeEach(() => {
         render(<Provider store={store}>
-            <Todo target="test" id={1} date="test date" isCompleted={false} />
+            <Todo target="test" id={'1'} date="test date" isCompleted={false} />
         </Provider>)
     })
 
@@ -54,7 +54,7 @@ describe('RENDER TESTS', () => {
 describe('FUNCTIONAL TESTS', () => {
     beforeEach(() => {
         render(<Provider store={store}>
-            <Todo target="test" id={1} date="test date" isCompleted={false} />
+            <Todo target="test" id={'1'} date="test date" isCompleted={false} />
         </Provider>)
     })
 

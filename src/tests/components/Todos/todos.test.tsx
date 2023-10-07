@@ -14,21 +14,21 @@ jest.mock("react-redux", () => ({
 const todos: Array<todoItemType> = [
     {
         target: 'test',
-        id: 1,
+        _id: '1',
         date: 'date',
         dateIsCompleted: 'date',
         isCompleted: true
     },
     {
         target: 'test2',
-        id: 1,
+        _id: '1',
         date: 'date',
         dateIsCompleted: 'date',
         isCompleted: true
     },
     {
         target: 'test3',
-        id: 1,
+        _id: '1',
         date: 'date',
         dateIsCompleted: 'date',
         isCompleted: true

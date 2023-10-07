@@ -11,7 +11,7 @@ describe('TEST TODO ACTIONS', () => {
         let todos: Array<todoItemType> = [
             {
                 target: 'test',
-                id: 1,
+                _id: '1',
                 isCompleted: false,
                 date: 'test'
             }
@@ -27,10 +27,10 @@ describe('TEST TODO ACTIONS', () => {
     })
 
     test('PUT TODO ACTION TEST', () => {
-        expect(putTodoAC(false, 1, 'test')).toEqual({ type: ActionTypes.CHANGE_TODO, isCompleted: false, id: 1, target: 'test' })
+        expect(putTodoAC(false, '1', 'test')).toEqual({ type: ActionTypes.CHANGE_TODO, isCompleted: false, id: '1', target: 'test' })
     })
 
     test('DELETE TODO ACTION TEST', () => {
-        expect(deleteTodoAC(1)).toEqual({ type: ActionTypes.DELETE_TODO, id: 1 })
+        expect(deleteTodoAC('1')).toEqual({ type: ActionTypes.DELETE_TODO, id: '1' })
     })
 })

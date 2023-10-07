@@ -24,7 +24,7 @@ const Todos: React.FC<PropsType> = (): JSX.Element => {
             <div data-testid='container' className={cn("container", style.container)}>
                 {   todos.length > 0 ?
                     todos.map((el: todoItemType) => {
-                        return <Todo target={el.target} id={el.id} isCompleted={el.isCompleted} date={el.date} dateIsCompleted={el.dateIsCompleted} />
+                        return <Todo target={el.target} id={el._id} isCompleted={el.isCompleted} date={el.date} dateIsCompleted={el.dateIsCompleted} />
                     }) : <h1 style={{ textTransform: 'uppercase', position: 'absolute', top: '40%' }}>Пока что нет ни одной цели!</h1>
                 }
             </div>

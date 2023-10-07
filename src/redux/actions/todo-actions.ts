@@ -20,13 +20,13 @@ export interface postTodosACType {
 export interface putTodoACType {
     type: typeof ActionTypes.CHANGE_TODO,
     isCompleted: boolean,
-    id: number,
+    id: string,
     target: string
 }
 
 export interface deleteTodoACType {
     type: typeof ActionTypes.DELETE_TODO,
-    id: number
+    id: string
 }
 
 export type ActionCreatorTypes = getTodosACType | setTodosACType | postTodosACType | putTodoACType | deleteTodoACType
@@ -47,14 +47,14 @@ export const postTodosAC = (target: string, isCompleted: boolean = false): postT
     isCompleted: isCompleted
 })
 
-export const putTodoAC = (isCompleted: boolean, id: number, target: string): putTodoACType => ({
+export const putTodoAC = (isCompleted: boolean, id: string, target: string): putTodoACType => ({
     type: ActionTypes.CHANGE_TODO,
     isCompleted: isCompleted,
     id: id,
     target: target
 })
 
-export const deleteTodoAC = (id: number): deleteTodoACType => ({
+export const deleteTodoAC = (id: string): deleteTodoACType => ({
     type: ActionTypes.DELETE_TODO,
     id: id
 })
