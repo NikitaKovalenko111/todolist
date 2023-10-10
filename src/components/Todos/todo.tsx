@@ -41,7 +41,7 @@ const Todo: React.FC<PropsType> = ({ target, id, date, dateIsCompleted, isComple
             </div>
             <div className={cn(style.subblock)}>
                 <span data-testid="todo/date" className={cn(style.date)}>Создано:<br /> { new Date(date).toLocaleString() }</span>
-                { dateIsCompleted && <span className={cn(style.dateIsCompleted)}>Завершено:<br />{ new Date(dateIsCompleted).toLocaleString() }</span> }
+                { dateIsCompleted && isCompleted && <span className={cn(style.dateIsCompleted)}>Завершено:<br />{ new Date(dateIsCompleted).toLocaleString() }</span> }
             </div>
         </article>
     )

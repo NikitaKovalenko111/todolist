@@ -25,7 +25,7 @@ const todoAPI: todoAPIType = {
         }).then((res) => res.data)
     },
     putTodo: (target, isCompleted, id) => {
-        return axiosInstance.put(`/todos/${id}`, {
+        return axiosInstance.patch(`/todos/${id}`, {
             target: target,
             isCompleted: isCompleted,
         }).then(res => res.data)

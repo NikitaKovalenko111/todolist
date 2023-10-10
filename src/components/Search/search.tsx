@@ -35,7 +35,7 @@ const Search: React.FC<PropsType> = (): JSX.Element => {
 
     return (
         <>
-            <Input.Search data-testid="search/input" placeholder="Цель" allowClear enterButton="Search" onChange={handleChange} onSearch={onSearch} value={target} style={{ width: '550px' }} />
+            <Input.Search data-testid="search/input" placeholder="Цель" className={cn(style.search)} allowClear enterButton="Search" onChange={handleChange} onSearch={onSearch} value={target} style={{ width: '550px' }} />
         </>
     )
 }

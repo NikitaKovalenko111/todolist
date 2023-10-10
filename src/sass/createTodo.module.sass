@@ -1,9 +1,11 @@
+$inputPadding: 10px
+    
 .createTodo
     width: 560px
     display: flex
     justify-content: center
     height: 50px
-    position: fixed
+    //position: fixed
     left: 35.2%
     bottom: 2%
     input
@@ -11,7 +13,7 @@
         outline: none
         font-family: sans-serif
         font-size: 15px
-        padding: 10px
+        padding: $inputPadding
         text-transform: uppercase
         font-weight: bold
         border: 1px #e1e3e1 solid
@@ -27,3 +29,20 @@
         &:hover
             cursor: pointer
             background-color: aqua
+
+@media screen and (max-width: 550px)
+    .createTodo
+        width: 450px
+
+@media screen and (max-width: 450px)
+    .createTodo
+        flex-direction: column
+        left: 0
+        bottom: 0
+        height: auto
+        width: 375px
+        input
+            width: calc( 100% - (2 * $inputPadding) )
+        button
+            width: 100%
+            height: 39px
