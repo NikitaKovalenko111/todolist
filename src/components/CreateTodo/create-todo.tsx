@@ -5,15 +5,17 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../types';
 import { postTodosAC } from '../../redux/actions/todo-actions';
 
-type PropsType = {}
+type PropsType = {
+    authorId: string
+}
 
-const CreateTodo: React.FC<PropsType> = (): JSX.Element => {
+const CreateTodo: React.FC<PropsType> = ({ authorId }): JSX.Element => {
 
     const [currentTarget, changeCurrentTarget] = useState("")
     const dispatch: AppDispatch = useDispatch()
 
     const postTargetHandler = (): void => {
-        dispatch(postTodosAC(currentTarget))
+        dispatch(postTodosAC(currentTarget, false, authorId))
         changeCurrentTarget('')
     }
 

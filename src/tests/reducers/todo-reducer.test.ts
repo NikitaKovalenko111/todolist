@@ -23,6 +23,7 @@ describe('todoReducer tests', () => {
                 target: 'test',
                 isCompleted: false,
                 date: '7/14/2023',
+                authorId: '1'
             }
         ] }
 
@@ -32,6 +33,7 @@ describe('todoReducer tests', () => {
                 target: 'test',
                 isCompleted: false,
                 date: '7/14/2023',
+                authorId: '1'
             }
         ]))).toEqual(expectedState)
     })

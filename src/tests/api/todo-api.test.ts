@@ -13,7 +13,8 @@ describe('API TESTS', () => {
                 _id: '1689577395845',
                 target: "Цель",
                 isCompleted: false,
-                date: "7/17/2023, 7:03:15 AM"
+                date: "7/17/2023, 7:03:15 AM",
+                authorId: '1'
             }
         ]
 
@@ -21,28 +22,30 @@ describe('API TESTS', () => {
 
         todoApiMock.getTodos.mockResolvedValue(response)
 
-        const data: todoResolve = await todoAPI.getTodos('') 
+        const data: todoResolve = await todoAPI.getTodos('1', '') 
 
         expect(todoApiMock.getTodos).toBeCalledTimes(1)
         expect(data).toEqual(response)
     })
 
     test('POST DATA API TEST', async () => {
-        let postData: { target: string, isCompleted: boolean } = {
+        let postData: { target: string, isCompleted: boolean, authorId: string } = {
             target: 'Тест',
-            isCompleted: false
+            isCompleted: false,
+            authorId: '1'
         }
 
         let resolveData: todoItemType = {
             _id: '1',
             target: 'Тест',
             isCompleted: false,
-            date: 'date'
+            date: 'date',
+            authorId: '1'
         }
 
         todoApiMock.postTodo.mockResolvedValue(resolveData)
 
-        const data: todoItemType = await todoAPI.postTodo(postData.target, postData.isCompleted)
+        const data: todoItemType = await todoAPI.postTodo(postData.target, postData.isCompleted, postData.authorId)
 
         expect(todoApiMock.postTodo).toBeCalledTimes(1)
         expect(data).toEqual(resolveData)
@@ -60,7 +63,8 @@ describe('API TESTS', () => {
             isCompleted: true,
             _id: '1', 
             date: 'date',
-            dateIsCompleted: 'date is completed'
+            dateIsCompleted: 'date is completed',
+            authorId: '1'
         }
 
         todoApiMock.putTodo.mockResolvedValue(resolveData)

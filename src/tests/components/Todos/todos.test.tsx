@@ -17,21 +17,24 @@ const todos: Array<todoItemType> = [
         _id: '1',
         date: 'date',
         dateIsCompleted: 'date',
-        isCompleted: true
+        isCompleted: true,
+        authorId: '1'
     },
     {
         target: 'test2',
         _id: '1',
         date: 'date',
         dateIsCompleted: 'date',
-        isCompleted: true
+        isCompleted: true,
+        authorId: '1'
     },
     {
         target: 'test3',
         _id: '1',
         date: 'date',
         dateIsCompleted: 'date',
-        isCompleted: true
+        isCompleted: true,
+        authorId: '1'
     }
 ]
 
@@ -48,7 +51,7 @@ describe('ELEMENTS ARE IN THE DOCUMENT TEST', () => {
         useSelectorMock.mockImplementation(selector => selector(state))
         render(
         <Provider store={store}>
-            <Todos />
+            <Todos userId="1" />
         </Provider>
         )
     })

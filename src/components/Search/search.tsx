@@ -7,9 +7,11 @@ import { AppDispatch } from '../../types'
 import { useDispatch } from 'react-redux'
 import { getTodosAC } from '../../redux/actions/todo-actions'
 
-type PropsType = {}
+type PropsType = {
+    userId: string
+}
 
-const Search: React.FC<PropsType> = (): JSX.Element => {
+const Search: React.FC<PropsType> = ({ userId }): JSX.Element => {
 
     const [target, changeTarget] = useState('')
     const [searchParams, setSearchParams] = useSearchParams()
@@ -17,7 +19,7 @@ const Search: React.FC<PropsType> = (): JSX.Element => {
     const dispatch: AppDispatch = useDispatch()
 
     const onSearch = () => {
-        dispatch(getTodosAC(target))
+        dispatch(getTodosAC(userId, target))
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

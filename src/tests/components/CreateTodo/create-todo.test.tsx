@@ -8,7 +8,7 @@ describe('RENDER TESTS', () => {
     beforeEach(() => {
         render(
             <Provider store={store}>
-                <CreateTodo />
+                <CreateTodo authorId="1" />
             </Provider>
         )
     })

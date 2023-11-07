@@ -10,7 +10,7 @@ describe('RENDER TESTS', () => {
         render(
             <MemoryRouter initialEntries={['/']}>
                 <Provider store={store}>
-                    <Search />
+                    <Search userId="1" />
                 </Provider>
             </MemoryRouter>
         )
@@ -32,7 +32,7 @@ describe('FUNCTIONAL TESTS', () => {
         render(
             <MemoryRouter initialEntries={['/']}>
                 <Provider store={store}>
-                    <Search />
+                    <Search userId="1" />
                 </Provider>
             </MemoryRouter>
         )

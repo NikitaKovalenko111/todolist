@@ -8,15 +8,17 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { getTodosAC } from '../../redux/actions/todo-actions'
 
-type PropsType = {}
+type PropsType = {
+    userId: string
+}
 
-const Todos: React.FC<PropsType> = (): JSX.Element => {
+const Todos: React.FC<PropsType> = ({ userId }): JSX.Element => {
 
     const todos: Array<todoItemType> = useSelector(todosSelector)
     const dispatch: AppDispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getTodosAC())  
+        dispatch(getTodosAC(userId))  
     }, [])
 
     return (
