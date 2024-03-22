@@ -1,3 +1,3 @@
-import { RootState } from "../types";
+import { RootState } from '../types'
 
-export const todosSelector = (state: RootState) => state.todos.todos 
+export const todosSelector = (state: RootState) => state.todos.todos

@@ -1,9 +1,9 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react"
+import { cleanup, render, screen } from '@testing-library/react'
 import Search from './../../../components/Search/search'
-import { MemoryRouter } from "react-router-dom"
-import store from "../../../redux/redux"
-import { Provider } from "react-redux"
-import userEvent from "@testing-library/user-event"
+import { MemoryRouter } from 'react-router-dom'
+import store from '../../../redux/redux'
+import { Provider } from 'react-redux'
+import userEvent from '@testing-library/user-event'
 
 describe('RENDER TESTS', () => {
     beforeEach(() => {

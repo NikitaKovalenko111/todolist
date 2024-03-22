@@ -1,10 +1,18 @@
-import { Goal } from 'src/schemas/todo.schema';
-import { TodosService } from './todos.service';
-import { Controller, Get, Param, Post, Body, Patch, Delete, Query } from '@nestjs/common';
-import { ObjectId } from 'mongoose';
-import { BodyCreateTodoDto } from './dto/create-todo.dto';
-import { BodyUpdateTodoDto } from './dto/update-todo.dto';
-import { getTodosDtoType } from './dto/get-todo.dto';
+import { Goal } from 'src/schemas/todo.schema'
+import { TodosService } from './todos.service'
+import {
+    Controller,
+    Get,
+    Param,
+    Post,
+    Body,
+    Patch,
+    Delete,
+} from '@nestjs/common'
+import { ObjectId } from 'mongoose'
+import { BodyCreateTodoDto } from './dto/create-todo.dto'
+import { BodyUpdateTodoDto } from './dto/update-todo.dto'
+import { getTodosDtoType } from './dto/get-todo.dto'
 
 @Controller('todos')
 export class TodosController {
@@ -26,7 +34,10 @@ export class TodosController {
     }
 
     @Patch('/:id')
-    patchTodoById(@Body() bodyUpdateTodoDto: BodyUpdateTodoDto, @Param('id') id: ObjectId): Promise<Goal> {
+    patchTodoById(
+        @Body() bodyUpdateTodoDto: BodyUpdateTodoDto,
+        @Param('id') id: ObjectId
+    ): Promise<Goal> {
         return this.todosService.patchTodoService(bodyUpdateTodoDto, id)
     }
 
@@ -34,5 +45,4 @@ export class TodosController {
     deleteTodoById(@Param('id') id: ObjectId) {
         return this.todosService.deleteTodoService(id)
     }
-    
 }

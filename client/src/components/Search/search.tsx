@@ -12,7 +12,6 @@ type PropsType = {
 }
 
 const Search: React.FC<PropsType> = ({ userId }): JSX.Element => {
-
     const [target, changeTarget] = useState('')
     const [searchParams, setSearchParams] = useSearchParams()
 
@@ -37,7 +36,17 @@ const Search: React.FC<PropsType> = ({ userId }): JSX.Element => {
 
     return (
         <>
-            <Input.Search data-testid="search/input" placeholder="Цель" className={cn(style.search)} allowClear enterButton="Search" onChange={handleChange} onSearch={onSearch} value={target} style={{ width: '550px' }} />
+            <Input.Search
+                data-testid="search/input"
+                placeholder="Цель"
+                className={cn(style.search)}
+                allowClear
+                enterButton="Search"
+                onChange={handleChange}
+                onSearch={onSearch}
+                value={target}
+                style={{ width: '550px' }}
+            />
         </>
     )
 }

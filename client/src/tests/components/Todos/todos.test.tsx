@@ -1,12 +1,11 @@
-import { Provider } from "react-redux"
-import Todos from "../../../components/Todos/todos"
-import store from "../../../redux/redux"
-import { cleanup, render, screen } from "@testing-library/react" 
-import { todoItemType, todoResolve } from '../../../types'
+import { Provider } from 'react-redux'
+import Todos from '../../../components/Todos/todos'
+import store from '../../../redux/redux'
+import { cleanup, render, screen } from '@testing-library/react'
+import { todoItemType } from '../../../types'
 import { useSelector } from 'react-redux'
-import { todosSelector } from './../../../selectors/todo-selectors'
 
-jest.mock("react-redux", () => ({
+jest.mock('react-redux', () => ({
     ...jest.requireActual('react-redux'),
     useSelector: jest.fn(),
 }))
@@ -18,7 +17,7 @@ const todos: Array<todoItemType> = [
         date: 'date',
         dateIsCompleted: 'date',
         isCompleted: true,
-        authorId: '1'
+        authorId: '1',
     },
     {
         target: 'test2',
@@ -26,7 +25,7 @@ const todos: Array<todoItemType> = [
         date: 'date',
         dateIsCompleted: 'date',
         isCompleted: true,
-        authorId: '1'
+        authorId: '1',
     },
     {
         target: 'test3',
@@ -34,25 +33,25 @@ const todos: Array<todoItemType> = [
         date: 'date',
         dateIsCompleted: 'date',
         isCompleted: true,
-        authorId: '1'
-    }
+        authorId: '1',
+    },
 ]
 
 const state = {
     todos: {
-        todos: todos
-    }
+        todos: todos,
+    },
 }
 
 describe('ELEMENTS ARE IN THE DOCUMENT TEST', () => {
     beforeEach(() => {
         const useSelectorMock = useSelector
         //@ts-ignore
-        useSelectorMock.mockImplementation(selector => selector(state))
+        useSelectorMock.mockImplementation((selector) => selector(state))
         render(
-        <Provider store={store}>
-            <Todos userId="1" />
-        </Provider>
+            <Provider store={store}>
+                <Todos userId="1" />
+            </Provider>
         )
     })
 

@@ -1,7 +1,7 @@
-import { userType } from "../../types"
-import { ActionTypesUsers } from "../reducers/user-reducer"
+import { userType } from '../../types'
+import { ActionTypesUsers } from '../reducers/user-reducer'
 
-export interface registrationACType {
+export interface IRegistrationACType {
     type: typeof ActionTypesUsers.REG
     payload: {
         username: string
@@ -9,7 +9,7 @@ export interface registrationACType {
     }
 }
 
-export interface setRegistratedUserACType {
+export interface ISetRegistratedUserACType {
     type: typeof ActionTypesUsers.SET_REG_USER
     payload: {
         _id: string
@@ -17,7 +17,7 @@ export interface setRegistratedUserACType {
     }
 }
 
-export interface authorizationACType {
+export interface IAuthorizationACType {
     type: typeof ActionTypesUsers.AUTH
     payload: {
         username: string
@@ -25,84 +25,95 @@ export interface authorizationACType {
     }
 }
 
-export interface authorizationByTokenACType {
+export interface IAuthorizationByTokenACType {
     type: typeof ActionTypesUsers.AUTH_BY_TOKEN
     payload: {
         token: string
     }
 }
 
-export interface getUsersACType {
+export interface IGetUsersACType {
     type: typeof ActionTypesUsers.GET_USERS
 }
 
-export interface setUsersACType {
+export interface ISetUsersACType {
     type: typeof ActionTypesUsers.SET_USERS
     payload: {
         users: Array<userType>
     }
 }
 
-export interface exitUserACType {
+export interface IExitUserACType {
     type: typeof ActionTypesUsers.EXIT
 }
 
-export interface changeIsLoadingACType {
+export interface IChangeIsLoadingACType {
     type: typeof ActionTypesUsers.CHANGE_IS_LOADING
     payload: {
         value: boolean
     }
 }
 
-export const registrationAC = (username: string, password: string): registrationACType => ({
+export const registrationAC = (
+    username: string,
+    password: string
+): IRegistrationACType => ({
     type: ActionTypesUsers.REG,
     payload: {
         username: username,
-        password: password
-    }
+        password: password,
+    },
 })
 
-export const setRegistratedUserAC = (username: string, _id: string): setRegistratedUserACType => ({
+export const setRegistratedUserAC = (
+    username: string,
+    _id: string
+): ISetRegistratedUserACType => ({
     type: ActionTypesUsers.SET_REG_USER,
     payload: {
         username: username,
-        _id: _id
-    }
+        _id: _id,
+    },
 })
 
-export const authorizationAC = (username: string, password: string): authorizationACType => ({
+export const authorizationAC = (
+    username: string,
+    password: string
+): IAuthorizationACType => ({
     type: ActionTypesUsers.AUTH,
     payload: {
         username: username,
-        password: password
-    }
+        password: password,
+    },
 })
 
-export const authorizationByTokenAC = (token: string): authorizationByTokenACType => ({
+export const authorizationByTokenAC = (
+    token: string
+): IAuthorizationByTokenACType => ({
     type: ActionTypesUsers.AUTH_BY_TOKEN,
     payload: {
-        token: token
-    }
+        token: token,
+    },
 })
 
-export const getUsersAC = (): getUsersACType => ({
-    type: ActionTypesUsers.GET_USERS
+export const getUsersAC = (): IGetUsersACType => ({
+    type: ActionTypesUsers.GET_USERS,
 })
 
-export const setUsersAC = (users: Array<userType>): setUsersACType => ({
+export const setUsersAC = (users: Array<userType>): ISetUsersACType => ({
     type: ActionTypesUsers.SET_USERS,
     payload: {
-        users: users
-    }
+        users: users,
+    },
 })
 
-export const exitAC = (): exitUserACType => ({
-    type: ActionTypesUsers.EXIT
+export const exitAC = (): IExitUserACType => ({
+    type: ActionTypesUsers.EXIT,
 })
 
-export const changeIsLoading = (value: boolean): changeIsLoadingACType => ({
+export const changeIsLoading = (value: boolean): IChangeIsLoadingACType => ({
     type: ActionTypesUsers.CHANGE_IS_LOADING,
     payload: {
-        value: value
-    }
+        value: value,
+    },
 })

@@ -1,13 +1,15 @@
-import { render, screen } from "@testing-library/react"
-import { Provider } from "react-redux"
-import store from "../../../redux/redux"
-import Header from "./../../../components/Layout/header"
+import { render, screen } from '@testing-library/react'
+import { Provider } from 'react-redux'
+import store from '../../../redux/redux'
+import Header from './../../../components/Layout/header'
 
 describe('APP COMPONENT TEST', () => {
     beforeEach(() => {
-        render(<Provider store={store}>
-            <Header userId="1" />
-        </Provider>)
+        render(
+            <Provider store={store}>
+                <Header userId="1" />
+            </Provider>
+        )
     })
 
     test('HEADER IS IN THE DOCUMENT', () => {
@@ -15,7 +17,7 @@ describe('APP COMPONENT TEST', () => {
 
         expect(Header).toBeInTheDocument()
     })
-    
+
     test('CONTAINER IS IN THE DOCUMENT', () => {
         const container = screen.getByTestId('container')
 

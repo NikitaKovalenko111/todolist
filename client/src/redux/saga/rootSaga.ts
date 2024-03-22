@@ -1,6 +1,16 @@
-import { all, takeEvery, fork } from 'redux-saga/effects'
-import { deleteTodoWatcher, getTodosWatcher, postTodoWatcher, putTodoWatcher } from './todoSagas'
-import { authByTokenSagaWatcher, authorizationSagaWatcher, registrationSagaWatcher, getUsersSagaWatcher } from './userSagas'
+import { all, fork } from 'redux-saga/effects'
+import {
+    deleteTodoWatcher,
+    getTodosWatcher,
+    postTodoWatcher,
+    putTodoWatcher,
+} from './todoSagas'
+import {
+    authByTokenSagaWatcher,
+    authorizationSagaWatcher,
+    registrationSagaWatcher,
+    getUsersSagaWatcher,
+} from './userSagas'
 
 function* rootSaga() {
     yield all([
@@ -11,7 +21,7 @@ function* rootSaga() {
         fork(registrationSagaWatcher),
         fork(authorizationSagaWatcher),
         fork(authByTokenSagaWatcher),
-        fork(getUsersSagaWatcher)
+        fork(getUsersSagaWatcher),
     ])
 }
 

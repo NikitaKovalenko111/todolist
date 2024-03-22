@@ -4,5 +4,5 @@ export class BodyUpdateTodoDto {
 
 export class UpdateTodoDto {
     readonly isCompleted: boolean
-    readonly dateIsCompleted?: Date | undefined 
+    readonly dateIsCompleted?: Date | undefined
 }

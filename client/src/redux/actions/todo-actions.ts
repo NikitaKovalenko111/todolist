@@ -1,62 +1,73 @@
-import { todoResolve } from "../../types"
-import { ActionTypesTodos } from "../reducers/todo-reducer"
+import { todoResolve } from '../../types'
+import { ActionTypesTodos } from '../reducers/todo-reducer'
 
-export interface getTodosACType {
-    type: typeof ActionTypesTodos.GET_TODOS,
-    target: string,
+export interface IGetTodosACType {
+    type: typeof ActionTypesTodos.GET_TODOS
+    target: string
     authorId: string
 }
 
-export interface setTodosACType {
-    type: typeof ActionTypesTodos.SET_TODOS,
+export interface ISetTodosACType {
+    type: typeof ActionTypesTodos.SET_TODOS
     todos: todoResolve
 }
 
-export interface postTodosACType {
-    type: typeof ActionTypesTodos.POST_TODO,
-    target: string,
+export interface IPostTodosACType {
+    type: typeof ActionTypesTodos.POST_TODO
+    target: string
     isCompleted: boolean
     authorId: string
 }
 
-export interface putTodoACType {
-    type: typeof ActionTypesTodos.CHANGE_TODO,
-    isCompleted: boolean,
-    id: string,
+export interface IPutTodoACType {
+    type: typeof ActionTypesTodos.CHANGE_TODO
+    isCompleted: boolean
+    id: string
     target: string
 }
 
-export interface deleteTodoACType {
-    type: typeof ActionTypesTodos.DELETE_TODO,
+export interface IDeleteTodoACType {
+    type: typeof ActionTypesTodos.DELETE_TODO
     id: string
 }
 
-export const getTodosAC = (authorId: string, target: string = ''): getTodosACType => ( { 
+export const getTodosAC = (
+    authorId: string,
+    target: string = ''
+): IGetTodosACType => ({
     type: ActionTypesTodos.GET_TODOS,
     target: target,
-    authorId: authorId
+    authorId: authorId,
 })
 
-export const setTodosAC = (todos: todoResolve): setTodosACType => ({
+export const setTodosAC = (todos: todoResolve): ISetTodosACType => ({
     type: ActionTypesTodos.SET_TODOS,
-    todos: todos
+    todos: todos,
 })
 
-export const postTodosAC = (target: string, isCompleted: boolean = false, authorId: string): postTodosACType => ({
+export const postTodosAC = (
+    target: string,
+    isCompleted: boolean = false,
+    authorId: string
+): IPostTodosACType => ({
     type: ActionTypesTodos.POST_TODO,
     target: target,
     isCompleted: isCompleted,
-    authorId: authorId
+    authorId: authorId,
 })
 
-export const putTodoAC = (isCompleted: boolean, id: string, target: string): putTodoACType => ({
+export const putTodoAC = (
+    isCompleted: boolean,
+    id: string,
+    target: string
+): IPutTodoACType => ({
     type: ActionTypesTodos.CHANGE_TODO,
     isCompleted: isCompleted,
     id: id,
-    target: target
+    target: target,
 })
 
-export const deleteTodoAC = (id: string): deleteTodoACType => ({
+export const deleteTodoAC = (id: string): IDeleteTodoACType => ({
     type: ActionTypesTodos.DELETE_TODO,
-    id: id
+    id: id,
 })

@@ -1,4 +1,4 @@
-import { RootState, todoItemType } from '../../types'
+import { RootState } from '../../types'
 import { todosSelector } from '../../selectors/todo-selectors'
 import store from '../../redux/redux'
 
@@ -12,4 +12,4 @@ describe('TODO SELECTORS TESTS', () => {
     test('TODOS SELECTOR TEST', () => {
         expect(todosSelector(state)).toEqual(state.todos.todos)
     })
-}) 
+})

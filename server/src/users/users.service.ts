@@ -1,26 +1,35 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model, Types } from 'mongoose';
-import { User } from 'src/schemas/user.schema';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
+import { InjectModel } from '@nestjs/mongoose'
+import { Model, Types } from 'mongoose'
+import { User } from 'src/schemas/user.schema'
 import * as bcrypt from 'bcrypt'
-import { registrationDto } from './authDto.dto';
+import { registrationDto } from './authDto.dto'
 import * as jwt from 'jsonwebtoken'
-import { authUserDto, authUserTokenDto } from './authUserDto.dto';
+import { authUserDto, authUserTokenDto } from './authUserDto.dto'
 
 @Injectable()
 export class UsersService {
-    constructor(@InjectModel(User.name) private readonly userModel: Model<User>) {}
+    constructor(
+        @InjectModel(User.name) private readonly userModel: Model<User>
+    ) {}
 
-    private generateAccessToken = (id: Types.ObjectId, username: string, password: string): string => {
+    private generateAccessToken = (
+        id: Types.ObjectId,
+        username: string,
+        password: string
+    ): string => {
         const payload = {
             id,
             username,
-            password
+            password,
         }
-        return jwt.sign(payload, process.env.JWT_KEY, {expiresIn: '24h'})
+        return jwt.sign(payload, process.env.JWT_KEY, { expiresIn: '24h' })
     }
 
-    async registrationService(username: string, password: string): Promise<User | string> {
+    async registrationService(
+        username: string,
+        password: string
+    ): Promise<User | string> {
         let candidate = await this.userModel.findOne({ username: username })
 
         if (candidate) {
@@ -31,7 +40,7 @@ export class UsersService {
 
         const registrationUserDto: registrationDto = {
             username: username,
-            password: cryptedPassword
+            password: cryptedPassword,
         }
 
         let user: User = await this.userModel.create(registrationUserDto)
@@ -39,28 +48,44 @@ export class UsersService {
         return user
     }
 
-    async authorizationService(username: string, password: string): Promise<authUserTokenDto> {
+    async authorizationService(
+        username: string,
+        password: string
+    ): Promise<authUserTokenDto> {
         let candidate = await this.userModel.findOne({ username: username })
 
         if (!candidate)
-            throw new HttpException("User with such username wasn't found", HttpStatus.BAD_REQUEST)
+            throw new HttpException(
+                "User with such username wasn't found",
+                HttpStatus.BAD_REQUEST
+            )
 
         let isPasswordCorrect = bcrypt.compareSync(password, candidate.password)
 
         if (!isPasswordCorrect)
-            throw new HttpException("Password is incorrect", HttpStatus.BAD_REQUEST)
+            throw new HttpException(
+                'Password is incorrect',
+                HttpStatus.BAD_REQUEST
+            )
 
-        const token: string = this.generateAccessToken(candidate._id, candidate.username, candidate.password)
+        const token: string = this.generateAccessToken(
+            candidate._id,
+            candidate.username,
+            candidate.password
+        )
 
         return {
             token: token,
             username: candidate.username,
-            _id: candidate._id
+            _id: candidate._id,
         }
     }
 
     async authorizationByToken(token: string): Promise<authUserDto> {
-        let decoded: jwt.JwtPayload = jwt.verify(token, process.env.JWT_KEY) as User
+        let decoded: jwt.JwtPayload = jwt.verify(
+            token,
+            process.env.JWT_KEY
+        ) as User
 
         const authUser: authUserDto = {
             _id: decoded.id,
@@ -80,7 +105,10 @@ export class UsersService {
         let user: User = await this.userModel.findById(id)
 
         if (!user)
-            throw new HttpException('There is no user with such id', HttpStatus.NOT_FOUND)
+            throw new HttpException(
+                'There is no user with such id',
+                HttpStatus.NOT_FOUND
+            )
 
         return user
     }

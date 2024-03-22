@@ -1,14 +1,21 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react"
-import Todo from "../../../components/Todos/todo"
-import { Provider } from "react-redux"
-import store from "../../../redux/redux"
-import todoAPI from "../../../api/todo-api"
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import Todo from '../../../components/Todos/todo'
+import { Provider } from 'react-redux'
+import store from '../../../redux/redux'
+import todoAPI from '../../../api/todo-api'
 
 describe('RENDER TESTS', () => {
     beforeEach(() => {
-        render(<Provider store={store}>
-            <Todo target="test" id={'1'} date="test date" isCompleted={false} />
-        </Provider>)
+        render(
+            <Provider store={store}>
+                <Todo
+                    target="test"
+                    id={'1'}
+                    date="test date"
+                    isCompleted={false}
+                />
+            </Provider>
+        )
     })
 
     afterEach(() => {
@@ -52,9 +59,16 @@ describe('RENDER TESTS', () => {
 
 describe('FUNCTIONAL TESTS', () => {
     beforeEach(() => {
-        render(<Provider store={store}>
-            <Todo target="test" id={'1'} date="test date" isCompleted={false} />
-        </Provider>)
+        render(
+            <Provider store={store}>
+                <Todo
+                    target="test"
+                    id={'1'}
+                    date="test date"
+                    isCompleted={false}
+                />
+            </Provider>
+        )
     })
 
     afterEach(() => {

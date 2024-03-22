@@ -1,6 +1,18 @@
-import store from "./redux/redux"
-import { getTodosACType, setTodosACType, postTodosACType, putTodoACType, deleteTodoACType } from "./redux/actions/todo-actions"
-import { changeIsLoadingACType, exitUserACType, registrationACType, setRegistratedUserACType, setUsersACType } from "./redux/actions/user-actions"
+import store from './redux/redux'
+import {
+    IGetTodosACType,
+    ISetTodosACType,
+    IPostTodosACType,
+    IPutTodoACType,
+    IDeleteTodoACType,
+} from './redux/actions/todo-actions'
+import {
+    IChangeIsLoadingACType,
+    IExitUserACType,
+    IRegistrationACType,
+    ISetRegistratedUserACType,
+    ISetUsersACType,
+} from './redux/actions/user-actions'
 
 export type RootState = ReturnType<typeof store.getState>
 
@@ -28,4 +40,14 @@ export type userTokenType = {
     _id: string
 }
 
-export type ActionCreatorTypes = getTodosACType | setTodosACType | postTodosACType | putTodoACType | deleteTodoACType | registrationACType | setRegistratedUserACType | setUsersACType | exitUserACType | changeIsLoadingACType
+export type ActionCreatorTypes =
+    | IGetTodosACType
+    | ISetTodosACType
+    | IPostTodosACType
+    | IPutTodoACType
+    | IDeleteTodoACType
+    | IRegistrationACType
+    | ISetRegistratedUserACType
+    | ISetUsersACType
+    | IExitUserACType
+    | IChangeIsLoadingACType
