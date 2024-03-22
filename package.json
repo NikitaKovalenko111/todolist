@@ -1,0 +1,22 @@
+{
+    "name": "todolist",
+    "version": "1.0.0",
+    "description": "basic fullstack todolist",
+    "author": "NikitaKovalenko111 <nikitakovalenko7219@gmail.com>",
+    "license": "MIT",
+    "private": false,
+    "dependencies": {
+        "concurrently": "^8.2.2"
+    },
+    "scripts": {
+        "start:client": "yarn --cwd ./client start",
+        "start:server": "yarn --cwd ./server start",
+        "start:server:prod": "yarn --cwd ./server start:prod",
+        "start:server:dev": "yarn --cwd ./server start:dev",
+        "start:dev": "concurrently \"yarn start:server:dev\" \"yarn start:client\"",
+        "start": "concurrently \"yarn start:server:prod\" \"yarn start:client\"",
+        "build:client": "yarn --cwd ./client build",
+        "build:server": "yarn --cwd ./server build",
+        "build": "concurrently \"yarn build:server\" \"yarn build:client\""
+    }
+}
