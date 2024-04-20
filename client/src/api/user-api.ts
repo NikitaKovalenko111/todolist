@@ -32,7 +32,7 @@ const userAPI: userAPIType = {
     },
 
     getUsers: () => {
-        return axiosInstance.get(`/`).then((el) => el.data)
+        return axiosInstance.get('/').then((el) => el.data)
     },
 }
 
